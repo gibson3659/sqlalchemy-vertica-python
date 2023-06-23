@@ -364,6 +364,43 @@ class VerticaDialect(PGDialect):
             } for name, src in connection.execute(text(query)).fetchall()
         ]
 
+    #@reflection.cache
+    def get_multi_columns(self, connection, **kw):
+        return super(PGDialect, self).get_multi_columns(connection, **kw)
+
+    #@reflection.cache
+    def get_multi_table_comment(self, connection, **kw):
+        return super(PGDialect, self).get_multi_table_comment(connection, **kw)
+
+    #@reflection.cache
+    def get_multi_pk_constraint(self, connection, **kw):
+        return super(PGDialect, self).get_multi_pk_constraint(connection, **kw)
+
+    #@reflection.cache
+    def get_multi_foreign_keys(self, connection, **kw):
+        return super(PGDialect, self).get_multi_foreign_keys(connection, **kw)
+
+    #@reflection.cache
+    def get_multi_indexes(self, connection, **kw):
+        return super(PGDialect, self).get_multi_indexes(connection, **kw)
+
+    #@reflection.cache
+    def get_multi_unique_constraints(self, connection, **kw):
+        return super(PGDialect, self).get_multi_unique_constraints(connection, **kw)
+
+    #@reflection.cache
+    def get_multi_check_constraints(self, connection, **kw):
+        return super(PGDialect, self).get_multi_check_constraints(connection, **kw)
+
+    #@reflection.cache
+    def get_multi_table_options(self, connection, **kw):
+        return super(PGDialect, self).get_multi_table_options(connection, **kw)
+
+    @reflection.cache
+    def get_temp_table_names(self, connection, **kw):
+        #temp tables not supported
+        return []
+        
     # constraints are enforced on selects, but returning nothing for these
     # methods allows table introspection to work
 
